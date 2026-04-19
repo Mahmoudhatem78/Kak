@@ -3,22 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AURA | Premium Futuristic Apparel</title>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>VODIKA STORE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* === CSS VARIABLES === */
+        /* ================= الأساسيات والألوان ================= */
         :root {
-            --bg-dark: #030305;
-            --bg-glass: rgba(10, 10, 15, 0.6);
-            --neon-blue: #00f3ff;
-            --neon-purple: #bc13fe;
+            --bg-dark: #050508;
+            --neon-glow: rgba(255, 255, 255, 0.4);
             --text-main: #ffffff;
-            --text-muted: #8892b0;
-            --transition-slow: 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
-            --transition-fast: 0.3s ease;
+            --text-muted: #a0a0a0;
+            --accent: #ffffff;
         }
 
-        /* === RESET & BASE === */
         * {
             margin: 0;
             padding: 0;
@@ -33,48 +29,50 @@
             scroll-behavior: smooth;
         }
 
-        h1, h2, h3, h4, .nav-links a, .logo {
-            font-family: 'Rajdhani', sans-serif;
-            text-transform: uppercase;
-        }
-
-        /* === BACKGROUND STARS === */
-        #star-container {
+        /* ================= خلفية الفضاء والنجوم ================= */
+        #space-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -2;
+            background: radial-gradient(circle at center, #111 0%, #000 100%);
             overflow: hidden;
-            background: radial-gradient(circle at center, #0a0a12 0%, #000000 100%);
         }
 
-        .star-layer {
+        .star {
             position: absolute;
-            width: 100%; height: 100%;
-            background: transparent;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle infinite alternate;
         }
 
-        /* === LOADING SPINNER === */
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            100% { opacity: 1; box-shadow: 0 0 10px white; }
+        }
+
+        /* ================= شاشة التحميل ================= */
         #loader {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--bg-dark);
+            background: #000;
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
+            transition: opacity 0.5s ease;
         }
 
         .spinner {
-            width: 80px; height: 80px;
-            border-radius: 50%;
+            width: 50px; height: 50px;
             border: 2px solid transparent;
-            border-top-color: var(--neon-blue);
-            border-bottom-color: var(--neon-purple);
-            animation: spin 1.5s linear infinite, pulse-glow 2s alternate infinite;
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
         }
 
-        /* === NAVBAR === */
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* ================= القائمة العلوية ================= */
         nav {
             position: fixed;
             top: 0; width: 100%;
@@ -82,795 +80,426 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 5%;
-            background: var(--bg-glass);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
             z-index: 100;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            transition: var(--transition-fast);
         }
 
+        /* === لتغيير اللوجو، يمكنك استبدال النص بصورة === */
         .logo {
-            font-size: 28px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 24px;
             font-weight: 700;
-            letter-spacing: 4px;
-            color: var(--text-main);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-            cursor: pointer;
+            letter-spacing: 3px;
+            color: white;
+            text-decoration: none;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 40px;
+            gap: 30px;
         }
 
         .nav-links a {
-            color: var(--text-main);
+            color: white;
             text-decoration: none;
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 13px;
             letter-spacing: 2px;
-            position: relative;
-            transition: var(--transition-fast);
+            text-transform: uppercase;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px; left: 0; width: 0%; height: 2px;
-            background: var(--neon-blue);
-            box-shadow: 0 0 10px var(--neon-blue);
-            transition: var(--transition-fast);
-        }
-
-        .nav-links a:hover { color: var(--neon-blue); }
-        .nav-links a:hover::after { width: 100%; }
-
-        .nav-icons {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .icon {
-            width: 24px; height: 24px;
-            fill: var(--text-main);
-            cursor: pointer;
-            transition: var(--transition-fast);
-        }
-
-        .icon:hover {
-            fill: var(--neon-purple);
-            filter: drop-shadow(0 0 8px var(--neon-purple));
-        }
-
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            flex-direction: column;
-            gap: 5px;
-        }
-        .hamburger div { width: 25px; height: 2px; background: white; transition: 0.3s; }
-
-        /* === HERO SECTION === */
+        /* ================= القسم الرئيسي (Hero) ================= */
         .hero {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            position: relative;
             text-align: center;
-            overflow: hidden;
+            position: relative;
         }
 
-        .morph-shape {
-            position: absolute;
-            width: 40vw; height: 40vw;
-            max-width: 600px; max-height: 600px;
-            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
-            filter: blur(60px);
-            opacity: 0.4;
-            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-            animation: morph 12s ease-in-out infinite, rotate 20s linear infinite;
-            z-index: -1;
+        .hero-img {
+            width: 300px;
+            animation: float 6s ease-in-out infinite;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.2));
         }
 
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 700;
-            letter-spacing: 10px;
-            margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-            animation: fadeUp 1.5s ease forwards;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
+        .shop-all-btn {
+            padding: 12px 30px;
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 16px;
             letter-spacing: 2px;
-            max-width: 600px;
-            animation: fadeUp 1.5s ease 0.3s forwards;
-            opacity: 0;
-            transform: translateY(30px);
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
         }
 
-        /* === FEATURED COLLECTION === */
-        .featured {
-            padding: 100px 5%;
-            max-width: 1400px;
+        .shop-all-btn:hover {
+            background: white;
+            color: black;
+            box-shadow: 0 0 20px rgba(255,255,255,0.5);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* ================= قسم المنتجات ================= */
+        .collection {
+            padding: 80px 5%;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 60px;
-            letter-spacing: 4px;
-            text-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
-            color: var(--neon-blue);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 32px;
+            margin-bottom: 50px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 40px;
         }
 
         .product-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 20px;
             text-align: center;
             cursor: pointer;
+            transition: 0.4s;
             position: relative;
-            transition: var(--transition-slow);
-            backdrop-filter: blur(5px);
-            overflow: hidden;
-            animation: float 6s ease-in-out infinite;
         }
 
-        /* Stagger floating animations for organic feel */
-        .product-card:nth-child(2) { animation-delay: 1s; }
-        .product-card:nth-child(3) { animation-delay: 2s; }
-        .product-card:nth-child(4) { animation-delay: 0.5s; }
-        .product-card:nth-child(5) { animation-delay: 1.5s; }
-        .product-card:nth-child(6) { animation-delay: 2.5s; }
-
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            box-shadow: inset 0 0 0 1px transparent;
-            border-radius: 16px;
-            transition: var(--transition-fast);
-            pointer-events: none;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            background: rgba(255, 255, 255, 0.05);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 243, 255, 0.2);
-        }
-
-        .product-card:hover::before {
-            box-shadow: inset 0 0 0 1px var(--neon-blue);
-        }
-
-        .img-container {
+        .img-box {
             position: relative;
             width: 100%;
             height: 350px;
-            margin-bottom: 20px;
-            border-radius: 12px;
-            overflow: hidden;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
         }
 
-        /* Glow Aura behind product */
-        .img-container::after {
+        /* تأثير الإضاءة حول المنتج */
+        .img-box::after {
             content: '';
             position: absolute;
             top: 50%; left: 50%;
-            width: 60%; height: 60%;
+            width: 70%; height: 70%;
             transform: translate(-50%, -50%);
-            background: var(--neon-blue);
-            filter: blur(50px);
-            opacity: 0;
-            transition: var(--transition-slow);
-            z-index: 1;
+            background: white;
+            filter: blur(40px);
+            opacity: 0.1;
+            transition: 0.4s;
+            z-index: -1;
         }
 
-        .product-card:hover .img-container::after { opacity: 0.3; }
-        
-        .product-card:nth-child(even):hover .img-container::after { background: var(--neon-purple); }
-        .product-card:nth-child(even):hover { box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(188, 19, 254, 0.2); }
-        .product-card:nth-child(even):hover::before { box-shadow: inset 0 0 0 1px var(--neon-purple); }
+        .product-card:hover .img-box::after { opacity: 0.3; }
+        .product-card:hover { transform: translateY(-10px); }
 
         .product-img {
-            width: 90%;
-            height: auto;
-            object-fit: cover;
-            position: relative;
-            z-index: 2;
-            transition: var(--transition-slow);
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.6));
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            transition: 0.4s;
         }
 
-        .product-card:hover .product-img { transform: scale(1.08); }
+        .product-card:hover .product-img { transform: scale(1.05); }
 
         .product-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 20px;
+            margin-bottom: 5px;
             letter-spacing: 1px;
         }
 
         .product-info p {
-            font-size: 1.1rem;
-            color: var(--neon-blue);
-            font-weight: 600;
+            color: var(--text-muted);
+            font-size: 14px;
         }
 
-        .product-card:nth-child(even) .product-info p { color: var(--neon-purple); }
-
-        /* === SUBSCRIBE SECTION === */
-        .subscribe {
-            padding: 100px 5%;
-            text-align: center;
-            background: linear-gradient(to bottom, transparent, rgba(10, 10, 15, 0.8), transparent);
-        }
-
-        .subscribe-box {
-            max-width: 500px;
-            margin: 0 auto;
-            display: flex;
-            gap: 10px;
-            position: relative;
-        }
-
-        .subscribe input {
-            flex: 1;
-            padding: 15px 20px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: white;
-            font-size: 1rem;
-            outline: none;
-            transition: var(--transition-fast);
-        }
-
-        .subscribe input:focus {
-            border-color: var(--neon-blue);
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
-        }
-
-        .btn {
-            padding: 15px 30px;
-            background: transparent;
-            color: white;
-            border: 1px solid var(--neon-blue);
-            border-radius: 8px;
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: var(--transition-fast);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%; width: 100%; height: 100%;
-            background: var(--neon-blue);
-            transition: var(--transition-fast);
-            z-index: -1;
-        }
-
-        .btn:hover::before { left: 0; }
-        .btn:hover { box-shadow: 0 0 20px var(--neon-blue); color: #000; }
-
-        /* === PRODUCT PAGE MODAL === */
-        #product-page {
+        /* ================= صفحة المنتج (Modal) ================= */
+        #product-modal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100vh;
-            background: var(--bg-dark);
+            background: rgba(5, 5, 8, 0.95);
+            backdrop-filter: blur(15px);
             z-index: 1000;
+            display: none;
             overflow-y: auto;
             opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.6s ease;
-        }
-
-        #product-page.active {
-            opacity: 1;
-            visibility: visible;
+            transition: opacity 0.4s ease;
         }
 
         .close-btn {
             position: absolute;
             top: 30px; right: 5%;
-            font-size: 30px;
+            font-size: 40px;
             color: white;
             cursor: pointer;
             z-index: 1001;
-            transition: var(--transition-fast);
         }
-        
-        .close-btn:hover { color: var(--neon-purple); text-shadow: 0 0 10px var(--neon-purple); }
 
-        .product-layout {
+        .modal-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            min-height: 80vh;
-            max-width: 1400px;
-            margin: 80px auto 0;
+            max-width: 1200px;
+            margin: 100px auto;
             padding: 0 5%;
-            gap: 60px;
+            gap: 50px;
             align-items: center;
         }
 
-        .product-img-large {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .modal-img-container img {
+            width: 100%;
+            max-width: 500px;
+            filter: drop-shadow(0 0 30px rgba(255,255,255,0.1));
             animation: float 6s ease-in-out infinite;
         }
 
-        .product-img-large::before {
-            content: '';
-            position: absolute;
-            width: 80%; height: 80%;
-            background: radial-gradient(circle, var(--neon-blue) 0%, transparent 70%);
-            opacity: 0.15;
-            filter: blur(40px);
-            z-index: 1;
-        }
-
-        .product-img-large img {
-            width: 100%;
-            max-width: 600px;
-            position: relative;
-            z-index: 2;
-            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.8));
-        }
-
-        .product-details h2 {
-            font-size: 3.5rem;
+        .modal-details h2 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 40px;
             margin-bottom: 10px;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
         }
 
-        .product-details .price {
-            font-size: 2rem;
-            color: var(--neon-blue);
-            font-weight: 600;
-            margin-bottom: 25px;
-            text-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
-        }
-
-        .product-details p.desc {
+        .modal-details .price {
+            font-size: 20px;
             color: var(--text-muted);
-            line-height: 1.8;
             margin-bottom: 30px;
-            font-size: 1.1rem;
         }
 
-        .options-group { margin-bottom: 30px; }
-        .options-group h4 { margin-bottom: 15px; font-size: 1.2rem; color: #fff; }
-
-        .size-selector { display: flex; gap: 15px; }
-        .size-box {
-            width: 45px; height: 45px;
-            display: flex; justify-content: center; align-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
+        .selectors { margin-bottom: 30px; }
+        .selectors label { display: block; margin-bottom: 10px; font-size: 14px; color: #ccc;}
+        
+        .size-btn {
+            background: transparent;
+            border: 1px solid #444;
+            color: white;
+            padding: 10px 15px;
+            margin-right: 10px;
             cursor: pointer;
-            transition: var(--transition-fast);
-            font-weight: 600;
+            transition: 0.3s;
         }
-        .size-box:hover, .size-box.active {
-            border-color: var(--neon-purple);
-            background: rgba(188, 19, 254, 0.1);
-            color: var(--neon-purple);
-            box-shadow: 0 0 15px rgba(188, 19, 254, 0.3);
-        }
+        .size-btn:hover, .size-btn.active { border-color: white; box-shadow: 0 0 10px rgba(255,255,255,0.3); }
 
-        .qty-selector { display: flex; align-items: center; gap: 15px; }
-        .qty-btn {
-            background: transparent; border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white; width: 40px; height: 40px; border-radius: 8px;
-            cursor: pointer; font-size: 1.2rem; transition: var(--transition-fast);
-        }
-        .qty-btn:hover { border-color: var(--neon-blue); color: var(--neon-blue); }
-        .qty-val { font-size: 1.2rem; width: 30px; text-align: center; }
-
-        .add-to-cart {
+        .add-cart-btn {
             width: 100%;
-            padding: 20px;
-            margin-top: 20px;
-            font-size: 1.2rem;
-            background: linear-gradient(45deg, var(--neon-blue), #0077ff);
+            padding: 15px;
+            background: white;
+            color: black;
             border: none;
-            border-radius: 8px;
-            color: #000;
-            font-weight: 700;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 18px;
+            font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
-            transition: var(--transition-fast);
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            transition: 0.3s;
+            margin-top: 20px;
         }
-        .add-to-cart:hover {
-            box-shadow: 0 0 30px rgba(0, 243, 255, 0.8);
-            transform: translateY(-2px);
+        .add-cart-btn:hover { box-shadow: 0 0 25px rgba(255,255,255,0.6); }
+
+        /* ================= الفوتر (الاشتراك) ================= */
+        .footer {
+            padding: 80px 5%;
+            text-align: center;
+            border-top: 1px solid #222;
         }
-
-        .recommendation { padding: 60px 5%; max-width: 1400px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 60px;}
-        .recommendation h3 { text-align: left; font-size: 2rem; margin-bottom: 30px; }
-
-        /* === ANIMATIONS === */
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-        @keyframes pulse-glow { 0% { box-shadow: 0 0 10px rgba(0,243,255,0.5); } 100% { box-shadow: 0 0 30px rgba(188,19,254,0.8); } }
-        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-        @keyframes morph {
-            0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
-            50% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-            100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+        .footer input {
+            padding: 12px;
+            background: transparent;
+            border: 1px solid #444;
+            color: white;
+            width: 250px;
+            outline: none;
         }
-        @keyframes rotate { 100% { transform: rotate(360deg); } }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        @keyframes starMove { from { transform: translateY(0); } to { transform: translateY(-2000px); } }
-
-        /* Utility classes for scroll animations */
-        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        /* === RESPONSIVE === */
-        @media (max-width: 968px) {
-            .product-layout { grid-template-columns: 1fr; gap: 40px; padding-top: 40px; }
-            .product-details { padding-bottom: 50px; }
-            .hero h1 { font-size: 3rem; }
+        .footer button {
+            padding: 12px 20px;
+            background: white;
+            color: black;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
         }
 
+        /* ================= التجاوب مع الموبايل ================= */
         @media (max-width: 768px) {
-            .nav-links, .nav-icons { display: none; }
-            .hamburger { display: flex; }
-            .nav-links.mobile-active {
-                display: flex; flex-direction: column; position: absolute;
-                top: 70px; left: 0; width: 100%; background: var(--bg-dark);
-                padding: 20px; border-bottom: 1px solid var(--neon-blue);
-                align-items: center; gap: 20px;
-            }
-            .subscribe-box { flex-direction: column; }
-            .hero h1 { font-size: 2.5rem; letter-spacing: 5px; }
+            .modal-content { grid-template-columns: 1fr; margin-top: 50px;}
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <div id="loader">
-        <div class="spinner"></div>
-    </div>
+    <div id="loader"><div class="spinner"></div></div>
 
-    <div id="star-container"></div>
+    <div id="space-bg"></div>
 
     <nav>
-        <div class="logo">AURA</div>
-        <ul class="nav-links" id="nav-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#featured">Catalog</a></li>
-            <li><a href="#subscribe">Contact</a></li>
+        <a href="#" class="logo">VODIKA STORE</a>
+        
+        <ul class="nav-links">
+            <li><a href="#">HOME</a></li>
+            <li><a href="#catalog">CATALOG</a></li>
+            <li><a href="#contact">CONTACT</a></li>
         </ul>
-        <div class="nav-icons">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-            <svg class="icon" viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
-        </div>
-        <div class="hamburger" id="hamburger">
-            <div></div><div></div><div></div>
-        </div>
+        <div style="color: white; font-size: 20px; cursor: pointer;">🛒</div>
     </nav>
 
-    <header class="hero" id="hero">
-        <div class="morph-shape"></div>
-        <h1>FUTURE DRIP</h1>
-        <p>Elevate your reality with next-gen streetwear. High-fidelity fabrics meeting cybernetic aesthetics.</p>
+    <header class="hero">
+        <img src="صورة-المنتج-الرئيسي-هنا.png" alt="Hero Product" class="hero-img">
+        <button class="shop-all-btn">SHOP ALL</button>
     </header>
 
-    <section class="featured" id="featured">
-        <h2 class="section-title reveal">FEATURED COLLECTION</h2>
+    <section class="collection" id="catalog">
+        <h2 class="section-title">Featured collection</h2>
         <div class="grid">
-            <div class="product-card reveal" onclick="openProduct('Cyber Void Hoodie', '120.00', 'Black')">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=500&q=80" alt="Hoodie" class="product-img">
+            
+            <div class="product-card" onclick="openProduct('VODIKA HOODIE 1', 'LE 999.00 EGP', 'صورة-المنتج-الاول-هنا.png')">
+                <div class="img-box">
+                    <img src="صورة-المنتج-الاول-هنا.png" alt="Product 1" class="product-img">
                 </div>
                 <div class="product-info">
-                    <h3>Cyber Void Hoodie</h3>
-                    <p>USD 120.00</p>
+                    <h3>VODIKA HOODIE 1</h3>
+                    <p>LE 999.00 EGP</p>
                 </div>
             </div>
-            <div class="product-card reveal" onclick="openProduct('Neon Core Pullover', '145.00', 'White')">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=500&q=80" alt="Hoodie" class="product-img" style="filter: drop-shadow(0 10px 15px rgba(255,255,255,0.2));">
+
+            <div class="product-card" onclick="openProduct('VODIKA HOODIE 2', 'LE 850.00 EGP', 'صورة-المنتج-الثاني-هنا.png')">
+                <div class="img-box">
+                    <img src="صورة-المنتج-الثاني-هنا.png" alt="Product 2" class="product-img">
                 </div>
                 <div class="product-info">
-                    <h3>Neon Core Pullover</h3>
-                    <p>USD 145.00</p>
+                    <h3>VODIKA HOODIE 2</h3>
+                    <p>LE 850.00 EGP</p>
                 </div>
             </div>
-            <div class="product-card reveal" onclick="openProduct('Stealth Ops Zip', '110.00', 'Grey')">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=500&q=80" alt="Hoodie" class="product-img">
+
+            <div class="product-card" onclick="openProduct('VODIKA JACKET', 'LE 1,200.00 EGP', 'صورة-المنتج-الثالث-هنا.png')">
+                <div class="img-box">
+                    <img src="صورة-المنتج-الثالث-هنا.png" alt="Product 3" class="product-img">
                 </div>
                 <div class="product-info">
-                    <h3>Stealth Ops Zip</h3>
-                    <p>USD 110.00</p>
+                    <h3>VODIKA JACKET</h3>
+                    <p>LE 1,200.00 EGP</p>
                 </div>
             </div>
-            <div class="product-card reveal" onclick="openProduct('Quantum Graphic', '95.00', 'Dark')">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1509942774463-acf339cf87d5?auto=format&fit=crop&w=500&q=80" alt="Hoodie" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3>Quantum Graphic</h3>
-                    <p>USD 95.00</p>
-                </div>
-            </div>
-            <div class="product-card reveal" onclick="openProduct('Aura Tech-Fleece', '160.00', 'Blue')">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1614031679234-5858eb5a43db?auto=format&fit=crop&w=500&q=80" alt="Hoodie" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3>Aura Tech-Fleece</h3>
-                    <p>USD 160.00</p>
-                </div>
-            </div>
-            <div class="product-card reveal" onclick="openProduct('Synapse Heavyweight', '135.00', 'Red')">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=80" alt="Hoodie" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3>Synapse Heavyweight</h3>
-                    <p>USD 135.00</p>
-                </div>
-            </div>
+
         </div>
     </section>
 
-    <section class="subscribe reveal" id="subscribe">
-        <h2 class="section-title" style="font-size: 2rem;">JOIN THE NETWORK</h2>
-        <div class="subscribe-box">
-            <input type="email" placeholder="Enter your neural link (Email)">
-            <button class="btn">SUBSCRIBE</button>
-        </div>
-    </section>
-
-    <div id="product-page">
+    <div id="product-modal">
         <div class="close-btn" onclick="closeProduct()">&times;</div>
-        
-        <div class="product-layout">
-            <div class="product-img-large">
+        <div class="modal-content">
+            <div class="modal-img-container">
                 <img id="modal-img" src="" alt="Product">
             </div>
-            <div class="product-details">
+            <div class="modal-details">
                 <h2 id="modal-title">Product Name</h2>
-                <div class="price" id="modal-price">USD 00.00</div>
-                <p class="desc">Engineered for the modern cyberpunk. This piece features temperature-regulating tech-fleece, luminescent threading accents, and a structural hood that maintains its silhouette in any atmospheric condition.</p>
+                <div class="price" id="modal-price">LE 00.00 EGP</div>
                 
-                <div class="options-group">
-                    <h4>Select Size</h4>
-                    <div class="size-selector">
-                        <div class="size-box" onclick="selectSize(this)">S</div>
-                        <div class="size-box active" onclick="selectSize(this)">M</div>
-                        <div class="size-box" onclick="selectSize(this)">L</div>
-                        <div class="size-box" onclick="selectSize(this)">XL</div>
-                    </div>
+                <div class="selectors">
+                    <label>Size</label>
+                    <button class="size-btn">S</button>
+                    <button class="size-btn active">M</button>
+                    <button class="size-btn">L</button>
+                    <button class="size-btn">XL</button>
                 </div>
 
-                <div class="options-group">
-                    <h4>Quantity</h4>
-                    <div class="qty-selector">
-                        <button class="qty-btn" onclick="changeQty(-1)">-</button>
-                        <div class="qty-val" id="qty-val">1</div>
-                        <button class="qty-btn" onclick="changeQty(1)">+</button>
-                    </div>
+                <div class="selectors" style="display: flex; gap: 20px; align-items: center;">
+                    <label style="margin: 0;">Quantity</label>
+                    <input type="number" value="1" min="1" style="width: 60px; padding: 5px; background: transparent; color: white; border: 1px solid #444; text-align: center;">
                 </div>
 
-                <button class="add-to-cart" onclick="addToCart()">INITIALIZE PURCHASE</button>
-            </div>
-        </div>
-
-        <div class="recommendation">
-            <h3>YOU MAY ALSO LIKE</h3>
-            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                <div class="product-card" style="padding: 10px;">
-                    <div class="img-container" style="height: 200px;">
-                        <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=300&q=80" class="product-img" alt="Rec">
-                    </div>
-                    <div class="product-info">
-                        <h3 style="font-size: 1.1rem;">Void Beanie</h3>
-                        <p style="font-size: 0.9rem;">USD 35.00</p>
-                    </div>
-                </div>
-                <div class="product-card" style="padding: 10px;">
-                    <div class="img-container" style="height: 200px;">
-                        <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=300&q=80" class="product-img" alt="Rec">
-                    </div>
-                    <div class="product-info">
-                        <h3 style="font-size: 1.1rem;">Cyber Cargo</h3>
-                        <p style="font-size: 0.9rem;">USD 180.00</p>
-                    </div>
-                </div>
-                <div class="product-card" style="padding: 10px;">
-                    <div class="img-container" style="height: 200px;">
-                        <img src="https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=300&q=80" class="product-img" alt="Rec">
-                    </div>
-                    <div class="product-info">
-                        <h3 style="font-size: 1.1rem;">Neon Mask</h3>
-                        <p style="font-size: 0.9rem;">USD 45.00</p>
-                    </div>
-                </div>
+                <button class="add-cart-btn">ADD TO CART</button>
+                <p style="margin-top: 15px; color: #aaa; font-size: 14px; text-decoration: underline; cursor: pointer;">SIZE CHART</p>
             </div>
         </div>
     </div>
 
+    <section class="footer" id="contact">
+        <p style="margin-bottom: 20px; font-family: 'Rajdhani', sans-serif; font-size: 20px;">Subscribe to our emails</p>
+        <div>
+            <input type="email" placeholder="Email">
+            <button>&rarr;</button>
+        </div>
+    </section>
+
     <script>
-        // --- 1. Initial Page Load & Loader ---
+        // إخفاء شاشة التحميل عند فتح الموقع
         window.addEventListener('load', () => {
             setTimeout(() => {
-                const loader = document.getElementById('loader');
-                loader.style.opacity = '0';
-                setTimeout(() => loader.style.display = 'none', 500);
-            }, 1000);
-            generateStars();
+                document.getElementById('loader').style.opacity = '0';
+                setTimeout(() => { document.getElementById('loader').style.display = 'none'; }, 500);
+            }, 800);
+            createStars();
         });
 
-        // --- 2. Generate CSS Starfield Background ---
-        function generateStars() {
-            const container = document.getElementById('star-container');
-            
-            function createLayer(count, size, speed) {
-                const layer = document.createElement('div');
-                layer.className = 'star-layer';
-                let boxShadow = '';
-                for(let i=0; i<count; i++) {
-                    const x = Math.floor(Math.random() * window.innerWidth);
-                    const y = Math.floor(Math.random() * window.innerHeight * 2); // Double height for scroll effect
-                    const color = Math.random() > 0.8 ? '#00f3ff' : Math.random() > 0.8 ? '#bc13fe' : '#ffffff';
-                    boxShadow += `${x}px ${y}px ${size}px ${color}${i === count-1 ? '' : ', '}`;
-                }
-                layer.style.boxShadow = boxShadow;
-                layer.style.width = '1px';
-                layer.style.height = '1px';
-                layer.style.animation = `starMove ${speed}s linear infinite`;
-                container.appendChild(layer);
+        // إنشاء النجوم في الخلفية برمجياً
+        function createStars() {
+            const bg = document.getElementById('space-bg');
+            for (let i = 0; i < 150; i++) {
+                let star = document.createElement('div');
+                star.className = 'star';
+                let size = Math.random() * 3 + 'px';
+                star.style.width = size;
+                star.style.height = size;
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.animationDuration = (Math.random() * 3 + 1) + 's';
+                star.style.animationDelay = Math.random() * 2 + 's';
+                bg.appendChild(star);
             }
-
-            createLayer(200, 1, 150); // Slow small stars
-            createLayer(100, 2, 100); // Medium stars
-            createLayer(50, 3, 50);   // Fast larger stars
         }
 
-        // --- 3. Scroll Reveal Animations ---
-        const revealElements = document.querySelectorAll('.reveal');
-        const revealOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-        
-        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target);
-            });
-        }, revealOptions);
-
-        revealElements.forEach(el => revealOnScroll.observe(el));
-
-        // --- 4. Mobile Menu Toggle ---
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('nav-links');
-        
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('mobile-active');
-        });
-
-        // --- 5. Product Modal Logic ---
+        // فتح وإغلاق نافذة المنتج
+        const modal = document.getElementById('product-modal');
         const loader = document.getElementById('loader');
-        const productModal = document.getElementById('product-page');
-        let currentQty = 1;
 
-        function openProduct(title, price, imgType) {
-            // Show Loader First for transition effect
+        function openProduct(title, price, imgSrc) {
+            // محاكاة التحميل عند فتح المنتج كما في الفيديو
             loader.style.display = 'flex';
-            setTimeout(() => loader.style.opacity = '1', 10);
+            loader.style.opacity = '1';
             
-            // Setup Modal Content (using clicked card data and unsplash map)
-            const imgMap = {
-                'Black': 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=80',
-                'White': 'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=800&q=80',
-                'Grey': 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=80',
-                'Dark': 'https://images.unsplash.com/photo-1509942774463-acf339cf87d5?auto=format&fit=crop&w=800&q=80',
-                'Blue': 'https://images.unsplash.com/photo-1614031679234-5858eb5a43db?auto=format&fit=crop&w=800&q=80',
-                'Red': 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80'
-            };
-
-            document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-price').innerText = 'USD ' + price;
-            document.getElementById('modal-img').src = imgMap[imgType] || imgMap['Black'];
-            
-            // Reset state
-            currentQty = 1;
-            document.getElementById('qty-val').innerText = currentQty;
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-
-            // Hide loader and show modal
             setTimeout(() => {
+                document.getElementById('modal-title').innerText = title;
+                document.getElementById('modal-price').innerText = price;
+                document.getElementById('modal-img').src = imgSrc;
+                
                 loader.style.opacity = '0';
                 setTimeout(() => {
                     loader.style.display = 'none';
-                    productModal.classList.add('active');
-                    productModal.scrollTop = 0; // Scroll to top of modal
-                }, 500);
-            }, 800); // Artificial delay to simulate loading
+                    modal.style.display = 'block';
+                    setTimeout(() => { modal.style.opacity = '1'; }, 10);
+                    document.body.style.overflow = 'hidden'; // إيقاف التمرير في الخلفية
+                }, 300);
+            }, 600);
         }
 
         function closeProduct() {
-            productModal.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Restore scroll
-        }
-
-        // --- 6. Product UI Interactions ---
-        function selectSize(element) {
-            document.querySelectorAll('.size-box').forEach(el => el.classList.remove('active'));
-            element.classList.add('active');
-        }
-
-        function changeQty(amount) {
-            currentQty += amount;
-            if (currentQty < 1) currentQty = 1;
-            document.getElementById('qty-val').innerText = currentQty;
-        }
-
-        function addToCart() {
-            const btn = document.querySelector('.add-to-cart');
-            const originalText = btn.innerText;
-            btn.innerText = 'ADDED TO NEURAL CART';
-            btn.style.background = 'var(--neon-purple)';
-            btn.style.color = '#fff';
-            btn.style.boxShadow = '0 0 30px var(--neon-purple)';
-            
-            // Play subtle sound (simulated visual feedback)
+            modal.style.opacity = '0';
             setTimeout(() => {
-                btn.innerText = originalText;
-                btn.style.background = '';
-                btn.style.color = '';
-                btn.style.boxShadow = '';
-            }, 2000);
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // إعادة التمرير
+            }, 400);
         }
 
-        // --- Navbar scroll effect ---
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if(window.scrollY > 50) {
-                nav.style.background = 'rgba(5, 5, 5, 0.9)';
-                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.5)';
-            } else {
-                nav.style.background = 'var(--bg-glass)';
-                nav.style.boxShadow = 'none';
-            }
+        // تفاعلات أزرار المقاسات
+        document.querySelectorAll('.size-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
         });
     </script>
 </body>
