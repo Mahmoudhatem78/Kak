@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إلى رنووشه.. قمر حياتي</title>
+    <title>إلى رنووشه.. الحتة الحلوة في عمري ❤️</title>
     <style>
-        /* استيراد خطوط احترافية جداً */
-        @import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;600;700&family=Tajawal:wght@300;400;700&display=swap');
+        /* استيراد خطوط احترافية ودافية */
+        @import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@600;700&family=Tajawal:wght@400;500;700&display=swap');
 
         :root {
             --primary-color: #ff2e63;
-            --secondary-color: #08d9d6;
-            --dark-bg: #0f1021;
-            --glass-bg: rgba(255, 255, 255, 0.05);
+            --dark-bg: #0b0c10;
+            --glass-bg: rgba(255, 255, 255, 0.04);
+            --glass-border: rgba(255, 255, 255, 0.08);
         }
 
         * {
@@ -37,7 +37,7 @@
             width: 100vw;
             height: 100vh;
             z-index: -1;
-            background: radial-gradient(circle at center, #1b1e3d 0%, #0a0b10 100%);
+            background: radial-gradient(circle at center, #16172e 0%, #050508 100%);
             overflow: hidden;
         }
 
@@ -45,24 +45,22 @@
             position: absolute;
             background: white;
             border-radius: 50%;
-            box-shadow: 0 0 10px white, 0 0 20px white;
             animation: twinkle linear infinite;
         }
 
         @keyframes twinkle {
-            0% { opacity: 0.2; transform: scale(0.8); }
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
             50% { opacity: 1; transform: scale(1.2); }
-            100% { opacity: 0.2; transform: scale(0.8); }
         }
 
-        /* شاشة الباسوورد الاحترافية */
+        /* شاشة الباسوورد السرية */
         #lock-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(10, 11, 16, 0.95);
+            background: #0a0a0f;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -71,101 +69,98 @@
         }
 
         .lock-box {
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 50px;
-            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            padding: 40px 30px;
+            border-radius: 25px;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            max-width: 90%;
-            width: 400px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            width: 90%;
+            max-width: 380px;
         }
 
         .lock-box h2 {
             font-family: 'El Messiri', sans-serif;
-            font-size: 2rem;
-            margin-bottom: 10px;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
             color: var(--primary-color);
+        }
+
+        .lock-box p {
+            color: #b3b3b3;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         .lock-box input {
             width: 100%;
-            padding: 15px;
-            margin: 20px 0;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--primary-color);
+            padding: 14px;
+            margin: 25px 0 15px 0;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 46, 99, 0.5);
             color: white;
-            border-radius: 15px;
-            font-size: 1.2rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
             text-align: center;
-            font-family: 'Tajawal', sans-serif;
             outline: none;
             transition: 0.3s;
         }
 
         .lock-box input:focus {
-            box-shadow: 0 0 15px var(--primary-color);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 15px rgba(255, 46, 99, 0.4);
         }
 
         .lock-box button {
-            background: linear-gradient(45deg, var(--primary-color), #ff758c);
+            background: linear-gradient(45deg, var(--primary-color), #ff6b8b);
             color: white;
             border: none;
-            padding: 15px 40px;
-            border-radius: 20px;
-            font-size: 1.2rem;
-            font-family: 'Tajawal', sans-serif;
+            padding: 14px 35px;
+            border-radius: 15px;
+            font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 10px 20px rgba(255, 46, 99, 0.4);
+            transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(255, 46, 99, 0.3);
         }
 
         .lock-box button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 25px rgba(255, 46, 99, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(255, 46, 99, 0.5);
         }
 
-        /* المحتوى الرئيسي للموقع */
+        /* الموقع الرئيسي */
         #main-website {
             display: none;
             opacity: 0;
-            transition: opacity 2s ease;
+            transition: opacity 1.5s ease;
         }
 
-        /* أقسام الموقع */
         section {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 50px 20px;
+            padding: 60px 20px;
             text-align: center;
         }
 
         .hero-title {
             font-family: 'El Messiri', sans-serif;
-            font-size: 5rem;
+            font-size: 4rem;
             font-weight: 700;
             background: linear-gradient(to right, #fff, #ff758c, var(--primary-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 20px;
-            text-shadow: 0px 10px 30px rgba(255, 46, 99, 0.3);
-            animation: floatText 4s ease-in-out infinite;
-        }
-
-        @keyframes floatText {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
         }
 
         .subtitle {
-            font-size: 1.8rem;
-            color: #ccc;
-            max-width: 800px;
+            font-size: 1.4rem;
+            color: #e0e0e0;
+            max-width: 750px;
             line-height: 1.8;
             margin-bottom: 30px;
         }
@@ -173,66 +168,63 @@
         /* كروت الجلاس مورفيزم الاحترافية */
         .glass-card {
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            padding: 40px;
-            max-width: 800px;
-            width: 90%;
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 35px;
+            max-width: 750px;
+            width: 95%;
             margin: 20px auto;
-            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
-            position: relative;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+        }
+
+        /* تنسيق مشغل الفيديو */
+        .video-wrapper {
+            width: 100%;
+            border-radius: 18px;
             overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            border: 2px solid rgba(255, 46, 99, 0.3);
+            margin-top: 20px;
+            background: #000;
         }
 
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
-            transform: skewX(-20deg);
-            animation: shine 6s infinite;
+        video {
+            width: 100%;
+            display: block;
         }
 
-        @keyframes shine {
-            0% { left: -100%; }
-            20% { left: 200%; }
-            100% { left: 200%; }
-        }
-
-        /* معرض الصور (الجاليري) */
+        /* معرض الصور */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            width: 90%;
-            max-width: 1000px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            width: 95%;
+            max-width: 900px;
+            margin-top: 35px;
         }
 
         .gallery img {
             width: 100%;
-            height: 350px;
+            height: 320px;
             object-fit: cover;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-            transition: 0.5s ease;
-            filter: grayscale(30%) brightness(0.8);
-            border: 2px solid transparent;
+            border-radius: 18px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.4);
+            transition: 0.4s ease;
+            filter: brightness(0.85);
         }
 
         .gallery img:hover {
-            transform: scale(1.05) translateY(-10px);
-            filter: grayscale(0%) brightness(1.1);
-            border-color: var(--primary-color);
-            box-shadow: 0 20px 40px rgba(255, 46, 99, 0.4);
+            transform: scale(1.04) translateY(-8px);
+            filter: brightness(1.05);
+            box-shadow: 0 18px 35px rgba(255, 46, 99, 0.3);
         }
 
-        /* تأثير الظهور عند النزول (Scroll Reveal) */
+        /* تأثير الظهور مع السكرول */
         .reveal {
             opacity: 0;
-            transform: translateY(100px);
-            transition: all 1s ease;
+            transform: translateY(60px);
+            transition: all 0.9s ease;
         }
 
         .reveal.active {
@@ -240,72 +232,78 @@
             transform: translateY(0);
         }
 
-        /* نبض القلب في النهاية */
         .heart-beat {
-            font-size: 5rem;
+            font-size: 4.5rem;
             color: var(--primary-color);
-            animation: heartbeat 1.5s infinite;
+            animation: heartbeat 1.4s infinite;
             margin-top: 20px;
         }
 
         @keyframes heartbeat {
-            0% { transform: scale(1); }
-            15% { transform: scale(1.3); }
-            30% { transform: scale(1); }
-            45% { transform: scale(1.3); }
-            60% { transform: scale(1); }
-            100% { transform: scale(1); }
+            0%, 60%, 100% { transform: scale(1); }
+            15% { transform: scale(1.25); }
+            30% { transform: scale(1.05); }
+            45% { transform: scale(1.25); }
         }
-
     </style>
 </head>
 <body>
 
-    <!-- الأغنية (تأكد إن اسم الأغنية ramy.mp3 في نفس الفولدر) -->
     <audio id="bg-music" src="ramy.mp3" loop></audio>
 
-    <!-- خلفية النجوم -->
     <div class="stars-bg" id="stars-container"></div>
 
-    <!-- شاشة القفل -->
     <div id="lock-screen">
         <div class="lock-box">
-            <h2>موقع مغلق 🔒</h2>
-            <p>لا يُسمح بالدخول إلا لقمر هذا الكوكب "رنووشه"</p>
-            <input type="password" id="passwordInput" placeholder="أدخلي كلمة السر...">
+            <h2>مكانا السري 🔒</h2>
+            <p>الموقع ده مسموح بدخوله لشخص واحد بس في الكوكب ده.. رنووشه قلبي.</p>
+            <input type="password" id="passwordInput" placeholder="اكتبي الباسوورد بتاعنا...">
             <br>
-            <button onclick="unlockSite()">دخول لعالمنا 🚀</button>
-            <p id="error-msg" style="color: #ff2e63; margin-top: 15px; font-weight: bold;"></p>
+            <button onclick="unlockSite()">ادخلي يا روحي ✨</button>
+            <p id="error-msg" style="color: #ff2e63; margin-top: 15px; font-size: 14px; font-weight: 500;"></p>
         </div>
     </div>
 
-    <!-- الموقع الرئيسي (يظهر بعد فك القفل) -->
     <div id="main-website">
         
-        <!-- القسم الأول: الترحيب -->
         <section>
             <h1 class="hero-title">رنووشه 👑</h1>
-            <p class="subtitle">زي ما رامي صبري قال.. "غار القمر من حبه فيا، وحلف ما ينور لياليا".. بس هو ميعرفش إنك إنتِ القمر اللي منور دنيتي كلها.</p>
+            <p class="subtitle">
+                عارفة.. رامي صبري لما غنى "غار القمر من حبه فيا وحلف ما ينور لياليا"، مكنش يعرف إن قمري الحقيقي قاعد بيقرأ الكلام ده دلوقتي.. <br>
+                إنتِ مش بس قمر حياتي، إنتِ الروقان والضحكة اللي بتنورلي أيامي الصعبة كلها.
+            </p>
         </section>
 
-        <!-- القسم الثاني: رسالة الحب -->
         <section>
             <div class="glass-card reveal">
-                <h2 style="font-family: 'El Messiri'; font-size: 2.5rem; color: var(--primary-color); margin-bottom: 20px;">رسالة من قلبي لقلبك ❤️</h2>
-                <p class="subtitle" style="color: #fff; font-size: 1.5rem; text-align: justify; text-align-last: center;">
-                    الموقع ده مش مجرد تصميم، ده مكان خاص بينا إحنا بس. حاولت أجمع فيه كل حاجة حلوة بتفكرني بيكي. <br>
-                    كل تفصيلة فيكي بتخليني أحبك أكتر من اليوم اللي قبله. وجودك هو العوض، وضحكتك هي الحاجة الوحيدة اللي قادرة تخليني أنسى أي تعب.
+                <h2 style="font-family: 'El Messiri'; font-size: 2rem; color: var(--primary-color); margin-bottom: 10px;">حاجة صغيرة ليكي 🎬❤️</h2>
+                <p style="color: #ccc; font-size: 1.1rem; margin-bottom: 15px;">فيديو صغير بس شايل جواه تفاصيل بتفكرني بيكي دايماً..</p>
+                
+                <div class="video-wrapper">
+                    <video id="loveVideo" controls preload="auto">
+                        <source src="خليك معايا يحبيبي مهما كان🫀🫂_viralvideo _typ _fy _اغاني _رومنسيه (MP4).mp4" type="video/mp4">
+                        متصفحك لا يدعم تشغيل الفيديو، بس عموماً أنا بحبك!
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="glass-card reveal">
+                <h2 style="font-family: 'El Messiri'; font-size: 2rem; color: var(--primary-color); margin-bottom: 25px;">كلام من جوه قلبي ليكي لوحدك.. 💌</h2>
+                <p style="font-size: 1.35rem; line-height: 1.9; text-align: justify; text-align-last: center; color: #f5f5f5;">
+                    بصي يا رنووش.. أنا ماليش أوي في رص الكلام والمقدمات الطويلة اللي مفيهاش روح، بس كل اللي أنا متأكد منه وعارفه، إن من أول ما دخلتي حياتي وكل حاجة بقا ليها طعم تاني خالص. <br><br>
+                    حنيتك عليا، ضحكتك اللي بتغير مودي في ثانية، وحتى شقاوتك وزعلك الصغير.. كل تفصيلة فيكي بتخليني أحمد ربنا إنك بتاعتي وإنك في حياتي. <br><br>
+                    الموقع ده أنا عملته بنفسي وتعبت فيه عشان يفضل دايماً مكان خاص بينا، تفتحيه في أي وقت تفتكري إن فيه حد هنا بيموت فيكي، ومكتفي بيكي عن الدنيا كلها، وبيشوفك أحسن وأجمل بنت في العالم.
                 </p>
             </div>
         </section>
 
-        <!-- القسم الثالث: معرض الصور الاحترافي -->
         <section>
-            <h2 class="reveal" style="font-family: 'El Messiri'; font-size: 3rem; margin-bottom: 10px;">ذكرياتنا اللي متتنسيش 📸</h2>
-            <p class="reveal subtitle">احلي رنووشه دي ولا ايه</p>
+            <h2 class="reveal" style="font-family: 'El Messiri'; font-size: 2.5rem; margin-bottom: 10px;">ذكرياتنا الرايقة 📸</h2>
+            <p class="reveal subtitle" style="font-size: 1.1rem; color: #aaa;">شوية صور من الحاجات اللي بتخليني أبتسم لوحدي وأنا باصص فيها</p>
             
             <div class="gallery reveal">
-                <!-- صور رومانسية بجودة خرافية -->
                 <img src="https://images.unsplash.com/photo-1474552226712-ac0f0d61af21?q=80&w=600" alt="رومانسية 1">
                 <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=600" alt="رومانسية 2">
                 <img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?q=80&w=600" alt="رومانسية 3">
@@ -313,10 +311,9 @@
             </div>
         </section>
 
-        <!-- القسم الرابع: النهاية -->
         <section>
-            <div class="glass-card reveal" style="text-align: center;">
-                <h2 style="font-family: 'El Messiri'; font-size: 2.5rem;">هفضل أحبك لآخر يوم في عمري</h2>
+            <div class="glass-card reveal" style="background: none; border: none; box-shadow: none;">
+                <h2 style="font-family: 'El Messiri'; font-size: 2.3rem; margin-bottom: 10px;">هفضل جنبك ومعاكي لآخر العمر يا حتة مني..</h2>
                 <div class="heart-beat">❤️</div>
             </div>
         </section>
@@ -324,30 +321,30 @@
     </div>
 
     <script>
-        // الباسوورد 
+        // كلمة السر
         const secretPassword = "رنووشه";
 
-        // توليد النجوم في الخلفية
+        // صنع النجوم في الخلفية تلقائياً وبأحجام مختلفة
         const starsContainer = document.getElementById('stars-container');
-        for (let i = 0; i < 150; i++) {
+        for (let i = 0; i < 120; i++) {
             let star = document.createElement('div');
             star.className = 'star';
-            star.style.width = Math.random() * 3 + 'px';
-            star.style.height = star.style.width;
+            let size = Math.random() * 3;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
             star.style.left = Math.random() * 100 + 'vw';
             star.style.top = Math.random() * 100 + 'vh';
             star.style.animationDuration = Math.random() * 3 + 2 + 's';
             starsContainer.appendChild(star);
         }
 
-        // دالة فك القفل
+        // دالة فتح الموقع وتشغيل المزيكا
         function unlockSite() {
             const input = document.getElementById('passwordInput').value.trim();
             const errorMsg = document.getElementById('error-msg');
             const music = document.getElementById('bg-music');
 
             if (input === secretPassword) {
-                // إخفاء شاشة القفل وإظهار الموقع
                 const lockScreen = document.getElementById('lock-screen');
                 const mainWebsite = document.getElementById('main-website');
                 
@@ -355,26 +352,25 @@
                 setTimeout(() => {
                     lockScreen.style.visibility = 'hidden';
                     mainWebsite.style.display = 'block';
-                    // إضافة تأثير دخول ناعم للموقع
                     setTimeout(() => {
                         mainWebsite.style.opacity = '1';
                     }, 100);
                 }, 1000);
 
-                // تشغيل الأغنية
-                music.play().catch(e => console.log("تحتاج للتفاعل مع الصفحة لتشغيل الصوت"));
+                // تشغيل أغنية رامي صبري
+                music.play().catch(e => console.log("المتصفح يطلب تفاعل لتشغيل الأغنية."));
             } else {
-                errorMsg.innerText = "الباسوورد غلط يا قمري.. جربي تاني!";
+                errorMsg.innerText = "تؤ تؤ الباسوورد غلط يا قلبي.. ركزي وجربي تاني! 😉";
             }
         }
 
-        // تأثير ظهور العناصر عند النزول (Scroll Reveal)
+        // أنيميشن السكرول الناعم للقطع
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
+                var elementVisible = 130;
 
                 if (elementTop < windowHeight - elementVisible) {
                     reveals[i].classList.add("active");
@@ -382,8 +378,7 @@
             }
         }
         window.addEventListener("scroll", reveal);
-        // تشغيلها مرة في البداية عشان العناصر اللي ظاهرة أصلاً
-        reveal();
+        reveal(); // تشغيل أولي لعناصر الشاشة الأولى
     </script>
 </body>
 </html>
