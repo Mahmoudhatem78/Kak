@@ -3,216 +3,387 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إلى رنووشه قلب وعين حبيبها ❤️</title>
+    <title>إلى رنووشه.. قمر حياتي</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0;700;1;700&family=Cairo:wght@400;700&display=swap');
+        /* استيراد خطوط احترافية جداً */
+        @import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;600;700&family=Tajawal:wght@300;400;700&display=swap');
 
-        body {
+        :root {
+            --primary-color: #ff2e63;
+            --secondary-color: #08d9d6;
+            --dark-bg: #0f1021;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: #fff;
+            font-family: 'Tajawal', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* خلفية النجوم المتحركة */
+        .stars-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: radial-gradient(circle at center, #1b1e3d 0%, #0a0b10 100%);
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px white, 0 0 20px white;
+            animation: twinkle linear infinite;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0.2; transform: scale(0.8); }
+        }
+
+        /* شاشة الباسوورد الاحترافية */
+        #lock-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(10, 11, 16, 0.95);
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            background: #120103; /* خلفية مخملية غامقة تليق بالورد */
-            font-family: 'Cairo', sans-serif;
-            overflow-x: hidden;
+            z-index: 1000;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+
+        .lock-box {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 50px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            max-width: 90%;
+            width: 400px;
+        }
+
+        .lock-box h2 {
+            font-family: 'El Messiri', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .lock-box input {
+            width: 100%;
+            padding: 15px;
+            margin: 20px 0;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--primary-color);
             color: white;
-        }
-
-        /* شاشة الباسوورد */
-        #login-screen {
-            text-align: center;
-            z-index: 10;
-            background: rgba(255, 182, 193, 0.15);
-            padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 25px rgba(255, 75, 92, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        input {
-            padding: 12px;
-            border-radius: 10px;
-            border: none;
-            outline: none;
-            text-align: center;
-            font-size: 18px;
-            margin-top: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-
-        button {
-            padding: 12px 30px;
-            background: #d63031;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 18px;
-            margin-top: 15px;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(214, 48, 49, 0.4);
-        }
-
-        button:hover {
-            background: #ff7675;
-            transform: scale(1.05);
-        }
-
-        /* المحتوى الرئيسي */
-        #main-content {
-            display: none;
-            text-align: center;
-            max-width: 700px;
-            padding: 20px;
-            z-index: 5;
-        }
-
-        h1 {
-            font-family: 'Amiri', serif;
-            font-size: 3.5rem;
-            color: #ff7675;
-            text-shadow: 0 0 20px rgba(255, 118, 117, 0.6);
-            margin-bottom: 20px;
-        }
-
-        /* حاوية الصور والورد */
-        .images-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-bottom: 25px;
-        }
-
-        .img-card {
-            width: 260px;
-            height: 320px;
             border-radius: 15px;
-            object-fit: cover;
-            border: 3px solid #ff7675;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-            transition: 0.5s;
+            font-size: 1.2rem;
+            text-align: center;
+            font-family: 'Tajawal', sans-serif;
+            outline: none;
+            transition: 0.3s;
         }
 
-        .img-card:hover {
-            transform: scale(1.05) rotate(2deg);
+        .lock-box input:focus {
+            box-shadow: 0 0 15px var(--primary-color);
         }
 
-        .love-letter {
-            background: rgba(255, 255, 255, 0.08);
-            padding: 35px;
+        .lock-box button {
+            background: linear-gradient(45deg, var(--primary-color), #ff758c);
+            color: white;
+            border: none;
+            padding: 15px 40px;
             border-radius: 20px;
-            border-top: 4px solid #ff7675;
-            border-bottom: 4px solid #ff7675;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            font-size: 1.2rem;
+            font-family: 'Tajawal', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 20px rgba(255, 46, 99, 0.4);
         }
 
-        p {
-            font-size: 1.6rem;
-            line-height: 1.9;
-            margin: 0;
-            color: #ffeaa7;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+        .lock-box button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(255, 46, 99, 0.6);
         }
 
-        /* أنيميشن الورد والقلوب المتساقطة */
-        .flower {
+        /* المحتوى الرئيسي للموقع */
+        #main-website {
+            display: none;
+            opacity: 0;
+            transition: opacity 2s ease;
+        }
+
+        /* أقسام الموقع */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-family: 'El Messiri', sans-serif;
+            font-size: 5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #fff, #ff758c, var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            text-shadow: 0px 10px 30px rgba(255, 46, 99, 0.3);
+            animation: floatText 4s ease-in-out infinite;
+        }
+
+        @keyframes floatText {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            color: #ccc;
+            max-width: 800px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        /* كروت الجلاس مورفيزم الاحترافية */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 40px;
+            max-width: 800px;
+            width: 90%;
+            margin: 20px auto;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
             position: absolute;
-            user-select: none;
-            animation: fall 6s linear infinite;
-            z-index: 1;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+            transform: skewX(-20deg);
+            animation: shine 6s infinite;
         }
 
-        @keyframes fall {
-            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
         }
+
+        /* معرض الصور (الجاليري) */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            width: 90%;
+            max-width: 1000px;
+            margin-top: 40px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            transition: 0.5s ease;
+            filter: grayscale(30%) brightness(0.8);
+            border: 2px solid transparent;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05) translateY(-10px);
+            filter: grayscale(0%) brightness(1.1);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 40px rgba(255, 46, 99, 0.4);
+        }
+
+        /* تأثير الظهور عند النزول (Scroll Reveal) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 1s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* نبض القلب في النهاية */
+        .heart-beat {
+            font-size: 5rem;
+            color: var(--primary-color);
+            animation: heartbeat 1.5s infinite;
+            margin-top: 20px;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.3); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.3); }
+            60% { transform: scale(1); }
+            100% { transform: scale(1); }
+        }
+
     </style>
 </head>
 <body>
 
-    <audio id="bg-music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
+    <!-- الأغنية (تأكد إن اسم الأغنية ramy.mp3 في نفس الفولدر) -->
+    <audio id="bg-music" src="ramy.mp3" loop></audio>
 
-    <div id="login-screen">
-        <h2>ممنوع الدخول إلا لملكة قلبي "رنووشه" 👑❤️</h2>
-        <p>اكتبي الباسوورد السري عشان تشوفي المفاجأة:</p>
-        <input type="password" id="passwordInput" placeholder="الباسوورد هنا...">
-        <br>
-        <button onclick="checkPassword()">فتح القفل دندنة 🎵</button>
-        <p id="error-msg" style="color: #ff7675; font-size: 15px; margin-top: 10px; font-weight: bold;"></p>
+    <!-- خلفية النجوم -->
+    <div class="stars-bg" id="stars-container"></div>
+
+    <!-- شاشة القفل -->
+    <div id="lock-screen">
+        <div class="lock-box">
+            <h2>موقع مغلق 🔒</h2>
+            <p>لا يُسمح بالدخول إلا لقمر هذا الكوكب "رنووشه"</p>
+            <input type="password" id="passwordInput" placeholder="أدخلي كلمة السر...">
+            <br>
+            <button onclick="unlockSite()">دخول لعالمنا 🚀</button>
+            <p id="error-msg" style="color: #ff2e63; margin-top: 15px; font-weight: bold;"></p>
+        </div>
     </div>
 
-    <div id="main-content">
-        <h1>يا رنووشه يا حتة من قلبي.. ❤️🌹</h1>
+    <!-- الموقع الرئيسي (يظهر بعد فك القفل) -->
+    <div id="main-website">
         
-        <div class="images-container">
-            <img class="img-card" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=400" alt="ورد أحمر">
-            <img class="img-card" src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=400" alt="حبيب وحبيبة">
-        </div>
+        <!-- القسم الأول: الترحيب -->
+        <section>
+            <h1 class="hero-title">رنووشه 👑</h1>
+            <p class="subtitle">زي ما رامي صبري قال.. "غار القمر من حبه فيا، وحلف ما ينور لياليا".. بس هو ميعرفش إنك إنتِ القمر اللي منور دنيتي كلها.</p>
+        </section>
 
-        <div class="love-letter">
-            <p>
-                عارفة يا رنووشه؟ من أول ما دخلتي حياتي وكل حاجة بقا ليها طعم تاني.. <br>
-                زي ما عمرو دياب بيقول: "أنت الحظ يا حظي".. إنتِ الروقان، والضحكة، والورد اللي بيملى دنيتي حب وأمان. <br>
-                الموقع ده معمول مخصوص لعيونك وعشان يفكرك دايماً إن مفيش حد في قلبي غيرك.
-            </p>
-        </div>
-        
-        <h2 style="color: #ff7675; font-family: 'Amiri', serif; font-size: 2.5rem; margin-top: 25px;">بحبك يا رنووشة العمر كله! ♾️❤️🌹</h2>
+        <!-- القسم الثاني: رسالة الحب -->
+        <section>
+            <div class="glass-card reveal">
+                <h2 style="font-family: 'El Messiri'; font-size: 2.5rem; color: var(--primary-color); margin-bottom: 20px;">رسالة من قلبي لقلبك ❤️</h2>
+                <p class="subtitle" style="color: #fff; font-size: 1.5rem; text-align: justify; text-align-last: center;">
+                    الموقع ده مش مجرد تصميم، ده مكان خاص بينا إحنا بس. حاولت أجمع فيه كل حاجة حلوة بتفكرني بيكي. <br>
+                    كل تفصيلة فيكي بتخليني أحبك أكتر من اليوم اللي قبله. وجودك هو العوض، وضحكتك هي الحاجة الوحيدة اللي قادرة تخليني أنسى أي تعب.
+                </p>
+            </div>
+        </section>
+
+        <!-- القسم الثالث: معرض الصور الاحترافي -->
+        <section>
+            <h2 class="reveal" style="font-family: 'El Messiri'; font-size: 3rem; margin-bottom: 10px;">ذكرياتنا اللي متتنسيش 📸</h2>
+            <p class="reveal subtitle">احلي رنووشه دي ولا ايه</p>
+            
+            <div class="gallery reveal">
+                <!-- صور رومانسية بجودة خرافية -->
+                <img src="https://images.unsplash.com/photo-1474552226712-ac0f0d61af21?q=80&w=600" alt="رومانسية 1">
+                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=600" alt="رومانسية 2">
+                <img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?q=80&w=600" alt="رومانسية 3">
+                <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=600" alt="رومانسية 4">
+            </div>
+        </section>
+
+        <!-- القسم الرابع: النهاية -->
+        <section>
+            <div class="glass-card reveal" style="text-align: center;">
+                <h2 style="font-family: 'El Messiri'; font-size: 2.5rem;">هفضل أحبك لآخر يوم في عمري</h2>
+                <div class="heart-beat">❤️</div>
+            </div>
+        </section>
+
     </div>
 
     <script>
-        // الباسوورد السري
-        const secretPassword = "رنووشه"; 
+        // الباسوورد 
+        const secretPassword = "رنووشه";
 
-        function checkPassword() {
+        // توليد النجوم في الخلفية
+        const starsContainer = document.getElementById('stars-container');
+        for (let i = 0; i < 150; i++) {
+            let star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 3 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.animationDuration = Math.random() * 3 + 2 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // دالة فك القفل
+        function unlockSite() {
             const input = document.getElementById('passwordInput').value.trim();
-            const error = document.getElementById('error-msg');
+            const errorMsg = document.getElementById('error-msg');
             const music = document.getElementById('bg-music');
-            
+
             if (input === secretPassword) {
-                // إخفاء شاشة القفل وإظهار المحتوى
-                document.getElementById('login-screen').style.display = 'none';
-                document.getElementById('main-content').style.display = 'block';
+                // إخفاء شاشة القفل وإظهار الموقع
+                const lockScreen = document.getElementById('lock-screen');
+                const mainWebsite = document.getElementById('main-website');
                 
-                // تشغيل أغنية عمرو دياب
-                music.play().catch(e => console.log("المتصفح حظر الموسيقى مؤقتاً: ", e));
-                
-                // بدء أنيميشن الورد والقلوب
-                startFlowerRain();
+                lockScreen.style.opacity = '0';
+                setTimeout(() => {
+                    lockScreen.style.visibility = 'hidden';
+                    mainWebsite.style.display = 'block';
+                    // إضافة تأثير دخول ناعم للموقع
+                    setTimeout(() => {
+                        mainWebsite.style.opacity = '1';
+                    }, 100);
+                }, 1000);
+
+                // تشغيل الأغنية
+                music.play().catch(e => console.log("تحتاج للتفاعل مع الصفحة لتشغيل الصوت"));
             } else {
-                error.innerText = "تؤ تؤ.. الباسوورد غلط يا رنووشه قلبي، غشيها من حبيبك! 😉";
+                errorMsg.innerText = "الباسوورد غلط يا قمري.. جربي تاني!";
             }
         }
 
-        // ميكس ورد وقلوب متساقطة لزوم الروقان
-        const flowersMix = ['🌹', '🌸', '❤️', '🌺', '🌷'];
+        // تأثير ظهور العناصر عند النزول (Scroll Reveal)
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
 
-        function startFlowerRain() {
-            setInterval(() => {
-                const flower = document.createElement('div');
-                // اختيار شكل عشوائي من الميكس
-                flower.innerHTML = flowersMix[Math.floor(Math.random() * flowersMix.length)];
-                flower.classList.add('flower');
-                
-                // توزيع عشوائي للورد في الشاشة
-                flower.style.left = Math.random() * 100 + 'vw';
-                flower.style.animationDuration = (Math.random() * 3 + 4) + 's'; // سرعة سقوط متفاوتة
-                flower.style.fontSize = (Math.random() * 25 + 15) + 'px'; // أحجام مختلفة
-                
-                document.body.appendChild(flower);
-
-                // مسح الوردة بعد ما تنزل تحت عشان الموقع ميهنجش
-                setTimeout(() => {
-                    flower.remove();
-                }, 6000);
-            }, 200); // تكرار كل 200 مللي ثانية عشان يبقى ورد كتيييير
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
         }
+        window.addEventListener("scroll", reveal);
+        // تشغيلها مرة في البداية عشان العناصر اللي ظاهرة أصلاً
+        reveal();
     </script>
 </body>
 </html>
