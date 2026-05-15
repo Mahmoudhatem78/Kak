@@ -3,414 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOCTOR STORE | المرجع الأول للكتب الخارجية</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-
+    <title>إلى رنووشه قلب وعين حبيبها ❤️</title>
     <style>
-        :root {
-            --primary: #ffffff; /* أبيض نقي */
-            --accent: #ffffff;
-            --bg-dark: #000000; /* أسود فاحم */
-            --glass: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            
-            /* --- [ مكان وضع رابط الخلفية العام للموقع ] --- */
-            --bg-image: url('Pin by Yare Mendez on insp _ Trippy visuals_ Dark nature aesthetic_ Film texture(MP4).mp4'); 
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            outline: none;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0;700;1;700&family=Cairo:wght@400;700&display=swap');
 
         body {
-            background-color: var(--bg-dark);
-            background-image: var(--bg-image);
-            background-size: cover;
-            background-attachment: fixed;
-            color: var(--primary);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #120103; /* خلفية مخملية غامقة تليق بالورد */
             font-family: 'Cairo', sans-serif;
             overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* --- Custom Scrollbar --- */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--bg-dark); }
-        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
-
-        /* --- Header & Logo Setup --- */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            transition: var(--transition);
-        }
-
-        header.scrolled {
-            padding: 10px 50px;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-decoration: none;
-            color: var(--primary);
-        }
-
-        /* --- [ اللوجو المتحرك 360 درجة ] --- */
-        .main-logo {
-            width: 60px;
-            height: 60px;
-            /* --- [ مكان وضع رابط صورة اللوجو ] --- */
-            content: url('Picsart_26-04-17_15-18-45-258.png'); 
-            border-radius: 50%;
-            border: 2px solid var(--primary);
-            animation: rotate360 8s linear infinite;
-            transition: var(--transition);
-        }
-
-        header.scrolled .main-logo {
-            width: 40px;
-            height: 40px;
-        }
-
-        @keyframes rotate360 {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .store-name {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 900;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-            background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 70%);
-        }
-
-        .hero h1 {
-            font-size: clamp(2rem, 8vw, 4.5rem);
-            font-weight: 900;
-            margin-bottom: 20px;
-            text-shadow: 0 0 30px rgba(255,255,255,0.2);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            opacity: 0.8;
-            margin-bottom: 40px;
-        }
-
-        .cta-btn {
-            padding: 15px 40px;
-            background: var(--primary);
-            color: var(--bg-dark);
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            border: 1px solid var(--primary);
-        }
-
-        .cta-btn:hover {
-            background: transparent;
-            color: var(--primary);
-            box-shadow: 0 0 30px var(--primary);
-        }
-
-        /* --- Products Grid --- */
-        .section-container {
-            padding: 100px 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        /* --- [ حركة ديناميكية للمنتجات وهي ثابتة ] --- */
-        .product-card {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            transition: var(--transition);
-            animation: float 5s ease-in-out infinite;
-            cursor: pointer;
-        }
-
-        /* توقيت مختلف لكل كارت لجعل الحركة تبدو طبيعية */
-        .product-card:nth-child(even) { animation-delay: 1s; }
-        .product-card:nth-child(3n) { animation-delay: 2s; }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(1deg); }
-        }
-
-        .product-card:hover {
-            border-color: var(--primary);
-            background: rgba(255,255,255,0.08);
-            transform: scale(1.03) translateY(-10px) !important;
-            animation-play-state: paused;
-        }
-
-        .product-img {
-            width: 100%;
-            height: 350px;
-            object-fit: contain;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
-            transition: var(--transition);
-        }
-
-        .product-card:hover .product-img {
-            filter: drop-shadow(0 0 20px var(--primary));
-            transform: scale(1.1);
-        }
-
-        .product-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .product-price {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            color: #aaa;
-            margin-bottom: 20px;
-        }
-
-        /* --- Checkout UI --- */
-        #checkout-modal {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95);
-            z-index: 2000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(20px);
-        }
-
-        .modal-content {
-            background: #111;
-            padding: 40px;
-            border-radius: 25px;
-            width: 90%;
-            max-width: 500px;
-            border: 1px solid var(--glass-border);
-        }
-
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; font-size: 0.9rem; color: #888; }
-        .form-group input {
-            width: 100%;
-            padding: 12px;
-            background: #000;
-            border: 1px solid var(--glass-border);
             color: white;
-            border-radius: 8px;
         }
 
-        .payment-info {
-            background: rgba(255, 215, 0, 0.05);
-            border: 1px dashed #ffd700;
-            padding: 15px;
+        /* شاشة الباسوورد */
+        #login-screen {
+            text-align: center;
+            z-index: 10;
+            background: rgba(255, 182, 193, 0.15);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 25px rgba(255, 75, 92, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        input {
+            padding: 12px;
             border-radius: 10px;
-            margin-bottom: 20px;
-            font-size: 0.85rem;
-            color: #ffd700;
+            border: none;
+            outline: none;
+            text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
-        .pay-btn {
-            width: 100%;
-            padding: 15px;
-            background: #ff4500; /* Fawry Orange/Red style */
+        button {
+            padding: 12px 30px;
+            background: #d63031;
             color: white;
             border: none;
             border-radius: 10px;
-            font-weight: 900;
             cursor: pointer;
-            text-transform: uppercase;
+            font-size: 18px;
+            margin-top: 15px;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(214, 48, 49, 0.4);
         }
 
-        /* --- Footer --- */
-        footer {
-            padding: 50px;
+        button:hover {
+            background: #ff7675;
+            transform: scale(1.05);
+        }
+
+        /* المحتوى الرئيسي */
+        #main-content {
+            display: none;
             text-align: center;
-            border-top: 1px solid var(--glass-border);
-            margin-top: 50px;
-            opacity: 0.6;
+            max-width: 700px;
+            padding: 20px;
+            z-index: 5;
         }
 
-        @media (max-width: 768px) {
-            header { padding: 15px 20px; }
-            .hero h1 { font-size: 2.5rem; }
+        h1 {
+            font-family: 'Amiri', serif;
+            font-size: 3.5rem;
+            color: #ff7675;
+            text-shadow: 0 0 20px rgba(255, 118, 117, 0.6);
+            margin-bottom: 20px;
+        }
+
+        /* حاوية الصور والورد */
+        .images-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .img-card {
+            width: 260px;
+            height: 320px;
+            border-radius: 15px;
+            object-fit: cover;
+            border: 3px solid #ff7675;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            transition: 0.5s;
+        }
+
+        .img-card:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .love-letter {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 35px;
+            border-radius: 20px;
+            border-top: 4px solid #ff7675;
+            border-bottom: 4px solid #ff7675;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        p {
+            font-size: 1.6rem;
+            line-height: 1.9;
+            margin: 0;
+            color: #ffeaa7;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+        }
+
+        /* أنيميشن الورد والقلوب المتساقطة */
+        .flower {
+            position: absolute;
+            user-select: none;
+            animation: fall 6s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
-    <header id="main-header">
-        <a href="#" class="logo-container">
-            <div class="main-logo"></div>
-            <span class="store-name">DOCTOR STORE</span>
-        </a>
-        <div class="nav-extra">
-            <span style="font-size: 1.2rem; cursor: pointer;">🛒</span>
-        </div>
-    </header>
+    <audio id="bg-music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
 
-    <section class="hero">
-        <h1>مستقبلك يبدأ من هنا</h1>
-        <p>دكتور ستور هو وجهتك الموثوقة للحصول على أفضل الكتب الخارجية والمراجع التعليمية بأعلى جودة وأسرع توصيل في مصر.</p>
-        <a href="#books" class="cta-btn">تصفح الكتب الآن</a>
-    </section>
-
-    <section class="section-container" id="books">
-        <h2 style="margin-bottom: 50px; font-size: 2rem; border-right: 5px solid white; padding-right: 20px;">أحدث الإصدارات</h2>
-        <div class="grid" id="product-grid">
-            </div>
-    </section>
-
-    <div id="checkout-modal">
-        <div class="modal-content">
-            <h2 style="margin-bottom: 20px; text-align: center;">إتمام الدفع عبر فوري</h2>
-            <div class="payment-info">
-                ⚠️ سيتم إرسال كود الدفع (Fawry Code) إلى بريدك وإرسال بياناتك للإدارة فور الضغط على تأكيد.
-            </div>
-            <form id="order-form">
-                <div class="form-group">
-                    <label>الاسم بالكامل</label>
-                    <input type="text" id="user-name" required placeholder="أدخل اسمك الثلاثي">
-                </div>
-                <div class="form-group">
-                    <label>رقم الهاتف</label>
-                    <input type="tel" id="user-phone" required placeholder="01xxxxxxxxx">
-                </div>
-                <div class="form-group">
-                    <label>العنوان بالتفصيل</label>
-                    <input type="text" id="user-location" required placeholder="المحافظة - المدينة - اسم الشارع">
-                </div>
-                <button type="submit" class="pay-btn">تأكيد الطلب والحصول على الكود</button>
-                <button type="button" onclick="closeCheckout()" style="background:none; border:none; color:#555; width:100%; margin-top:10px; cursor:pointer;">إلغاء</button>
-            </form>
-        </div>
+    <div id="login-screen">
+        <h2>ممنوع الدخول إلا لملكة قلبي "رنووشه" 👑❤️</h2>
+        <p>اكتبي الباسوورد السري عشان تشوفي المفاجأة:</p>
+        <input type="password" id="passwordInput" placeholder="الباسوورد هنا...">
+        <br>
+        <button onclick="checkPassword()">فتح القفل دندنة 🎵</button>
+        <p id="error-msg" style="color: #ff7675; font-size: 15px; margin-top: 10px; font-weight: bold;"></p>
     </div>
 
-    <footer>
-        &copy; 2026 DOCTOR STORE - ALL RIGHTS RESERVED.
-    </footer>
+    <div id="main-content">
+        <h1>يا رنووشه يا حتة من قلبي.. ❤️🌹</h1>
+        
+        <div class="images-container">
+            <img class="img-card" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=400" alt="ورد أحمر">
+            <img class="img-card" src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=400" alt="حبيب وحبيبة">
+        </div>
+
+        <div class="love-letter">
+            <p>
+                عارفة يا رنووشه؟ من أول ما دخلتي حياتي وكل حاجة بقا ليها طعم تاني.. <br>
+                زي ما عمرو دياب بيقول: "أنت الحظ يا حظي".. إنتِ الروقان، والضحكة، والورد اللي بيملى دنيتي حب وأمان. <br>
+                الموقع ده معمول مخصوص لعيونك وعشان يفكرك دايماً إن مفيش حد في قلبي غيرك.
+            </p>
+        </div>
+        
+        <h2 style="color: #ff7675; font-family: 'Amiri', serif; font-size: 2.5rem; margin-top: 25px;">بحبك يا رنووشة العمر كله! ♾️❤️🌹</h2>
+    </div>
 
     <script>
-        // بيانات المنتجات (6 كتب)
-        const products = [
-            { id: 1, name: "كتاب المعاصر - رياضيات", price: "185 EGP", img: "https://placehold.co/400x550/111/fff?text=Book+1" },
-            { id: 2, name: "كتاب الامتحان - كيمياء", price: "210 EGP", img: "https://placehold.co/400x550/111/fff?text=Book+2" },
-            { id: 3, name: "كتاب الأضواء - لغة عربية", price: "195 EGP", img: "https://placehold.co/400x550/111/fff?text=Book+3" },
-            { id: 4, name: "كتاب نيو جينيس - English", price: "170 EGP", img: "https://placehold.co/400x550/111/fff?text=Book+4" },
-            { id: 5, name: "كتاب ميرسي - French", price: "160 EGP", img: "https://placehold.co/400x550/111/fff?text=Book+5" },
-            { id: 6, name: "كتاب الإبداع - لغة عربية", price: "180 EGP", img: "https://placehold.co/400x550/111/fff?text=Book+6" }
-        ];
+        // الباسوورد السري
+        const secretPassword = "رنووشه"; 
 
-        // عرض المنتجات في الشبكة
-        const grid = document.getElementById('product-grid');
-        products.forEach(p => {
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            card.onclick = () => openCheckout(p.name);
-            card.innerHTML = `
-                <img src="${p.img}" class="product-img" alt="${p.name}">
-                <div class="product-title">${p.name}</div>
-                <div class="product-price">${p.price}</div>
-                <div style="font-size:0.8rem; color:white; border:1px solid white; padding:5px; border-radius:5px; display:inline-block;">اطلب الآن</div>
-            `;
-            grid.appendChild(card);
-        });
-
-        // تأثير السكرول للهيدر واللوجو المصغر
-        window.onscroll = function() {
-            const header = document.getElementById('main-header');
-            if (window.pageYOffset > 100) {
-                header.classList.add('scrolled');
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value.trim();
+            const error = document.getElementById('error-msg');
+            const music = document.getElementById('bg-music');
+            
+            if (input === secretPassword) {
+                // إخفاء شاشة القفل وإظهار المحتوى
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                
+                // تشغيل أغنية عمرو دياب
+                music.play().catch(e => console.log("المتصفح حظر الموسيقى مؤقتاً: ", e));
+                
+                // بدء أنيميشن الورد والقلوب
+                startFlowerRain();
             } else {
-                header.classList.remove('scrolled');
+                error.innerText = "تؤ تؤ.. الباسوورد غلط يا رنووشه قلبي، غشيها من حبيبك! 😉";
             }
-        };
-
-        // إدارة عمليات الدفع والطلب
-        let currentProduct = "";
-
-        function openCheckout(name) {
-            currentProduct = name;
-            document.getElementById('checkout-modal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
         }
 
-        function closeCheckout() {
-            document.getElementById('checkout-modal').style.display = 'none';
-            document.body.style.overflow = 'auto';
+        // ميكس ورد وقلوب متساقطة لزوم الروقان
+        const flowersMix = ['🌹', '🌸', '❤️', '🌺', '🌷'];
+
+        function startFlowerRain() {
+            setInterval(() => {
+                const flower = document.createElement('div');
+                // اختيار شكل عشوائي من الميكس
+                flower.innerHTML = flowersMix[Math.floor(Math.random() * flowersMix.length)];
+                flower.classList.add('flower');
+                
+                // توزيع عشوائي للورد في الشاشة
+                flower.style.left = Math.random() * 100 + 'vw';
+                flower.style.animationDuration = (Math.random() * 3 + 4) + 's'; // سرعة سقوط متفاوتة
+                flower.style.fontSize = (Math.random() * 25 + 15) + 'px'; // أحجام مختلفة
+                
+                document.body.appendChild(flower);
+
+                // مسح الوردة بعد ما تنزل تحت عشان الموقع ميهنجش
+                setTimeout(() => {
+                    flower.remove();
+                }, 6000);
+            }, 200); // تكرار كل 200 مللي ثانية عشان يبقى ورد كتيييير
         }
-
-        document.getElementById('order-form').onsubmit = function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('user-name').value;
-            const phone = document.getElementById('user-phone').value;
-            const location = document.getElementById('user-location').value;
-            const fawryCode = Math.floor(100000000 + Math.random() * 900000000); // كود عشوائي
-
-            // محاكاة إرسال البيانات (في الحقيقة يتم ربطها بـ API)
-            const message = `
-                🚨 طلب جديد في DOCTOR STORE 🚨
-                ---------------------------
-                اسم العميل: ${name}
-                رقم الهاتف: ${phone}
-                العنوان: ${location}
-                المنتج: ${currentProduct}
-                كود فوري: ${fawryCode}
-            `;
-
-            console.log("تم إرسال هذه البيانات للإدارة:", message);
-
-            alert(`شكراً يا دكتور ${name}!\nتم تسجيل طلبك لـ ${currentProduct}.\nكود الدفع فوري الخاص بك هو: ${fawryCode}\nيرجى التوجه لأي منفذ فوري للدفع خلال 24 ساعة.`);
-            
-            closeCheckout();
-        };
     </script>
 </body>
 </html>
